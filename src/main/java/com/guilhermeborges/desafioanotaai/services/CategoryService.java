@@ -7,6 +7,7 @@ import com.guilhermeborges.desafioanotaai.domain.repositories.CategoryRepository
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class CategoryService {
@@ -47,5 +48,9 @@ public class CategoryService {
                 .orElseThrow(CategoryNotFoundException::new);
 
         this.repository.delete(category);
+    }
+
+    public Optional<Category> getById(String id) {
+        return this.repository.findById(id);
     }
 }
